@@ -1,14 +1,6 @@
 <template>
   <Layout>
     <header class="header">
-      <div class="header__logo-box">
-        <img
-          src="../../static/legacyimg/logo-white.png"
-          alt="Logo"
-          class="header__logo"
-        />
-      </div>
-
       <div class="header__text-box">
         <h1 class="heading-primary">
           <span class="heading-primary--main">Dr. B</span>
@@ -287,18 +279,13 @@
         </div>
       </section>
     </main>
-    <Newsletter />
   </Layout>
 </template>
 
 <script>
-import Newsletter from "../components/Newsletter.vue";
 export default {
   metaInfo: {
     title: "Home",
-  },
-  components: {
-    Newsletter,
   },
 };
 </script>
