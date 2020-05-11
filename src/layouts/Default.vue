@@ -3,17 +3,20 @@
     class="content-wrapper bg-background-primary font-sans text-copy-primary leading-normal flex flex-col min-h-screen"
     :class="theme"
   >
-    <header class="border-t-14 border-green-700">
+    <header class="border-t-14 border-blue-900">
       <nav
-        class="container mx-auto flex flex-wrap justify-between items-center py-8"
+        class="container mx-auto flex flex-wrap justify-between items-center py-8 bg-blue-900"
       >
         <div>
           <g-link v-if="theme === 'theme-light'" to="/"
-            ><g-image src="../../static/logo.svg" class="w-40" alt="logo"
+            ><g-image
+              src="../../static/logo-horizontal-white-2x.png"
+              class="w-40"
+              alt="logo"
           /></g-link>
           <g-link v-else to="/"
             ><g-image
-              src="../../static/logo_dark_mode.svg"
+              src="../../static/logo-horizontal-white-2x.png"
               class="w-40"
               alt="logo"
           /></g-link>
@@ -42,37 +45,22 @@
           <li class="mb-6 lg:mb-0">
             <search-input />
           </li>
-          <li>
+          <!-- <li>
             <theme-switcher :theme="theme" @themeChanged="updateTheme" />
-          </li>
+          </li> -->
           <li>
             <a
               v-if="$route.path === '/'"
-              href="/#projects"
-              v-scroll-to="'#projects'"
+              href="/#section-research"
+              v-scroll-to="'#section-research'"
               class="text-copy-primary hover:text-gray-600"
-              >Projects</a
+              >Research</a
             >
             <g-link
               v-else
               to="/#projects"
               class="text-copy-primary hover:text-gray-600"
               >Projects</g-link
-            >
-          </li>
-          <li>
-            <a
-              v-if="$route.path === '/'"
-              href="/#about"
-              v-scroll-to="'#about'"
-              class="text-copy-primary hover:text-gray-600"
-              >About</a
-            >
-            <g-link
-              v-else
-              to="/#about"
-              class="text-copy-primary hover:text-gray-600"
-              >About</g-link
             >
           </li>
           <li>
@@ -107,34 +95,33 @@
     <div class="flex-grow">
       <slot />
     </div>
-    <footer class="bg-green-700 text-white">
+
+    <footer class="bg-blue-900">
       <div
         class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-8"
       >
         <div class="mb-8 lg:mb-0">
+          Copyright {{ new Date().getFullYear() }}. All rights reserved. Theme
+          adapted from A. Madarang's Gridsome Portfolio Starter and
+          <a href="https://www.udemy.com/advanced-css-and-sass/"
+            >Advanced CSS and Sass</a
+          >
+          by Jonas Schmedtmann. Content is property of Dr. Bhubanjyoti
+          Bhattacharya ("Dr. B"). Many of the images here are used courtesy of
+          <a href="https://copyright.web.cern.ch/">CERN</a>.
           <div>
-            Copyright {{ new Date().getFullYear() }}. All rights reserved.
-          </div>
-          <div>
-            <a
-              href="/rss.xml"
-              class="text-white hover:text-gray-400 font-normal"
+            <a href="/rss.xml" class="hover:text-gray-400 font-normal"
               >RSS Feed</a
             >
             |
-            <a
-              href="/sitemap.xml"
-              class="text-white hover:text-gray-400 font-normal"
+            <a href="/sitemap.xml" class="hover:text-gray-400 font-normal"
               >Sitemap</a
             >
           </div>
         </div>
         <ul class="flex items-center space-x-8">
           <li>
-            <a
-              href="mailto:me@example.com"
-              class="text-white hover:text-gray-400"
-            >
+            <a href="mailto:me@example.com" class="hover:text-gray-400">
               <svg
                 width="25"
                 height="20"
@@ -153,7 +140,7 @@
             <a
               href="https://youtube.com/drehimself"
               target="_blank"
-              class="text-white hover:text-gray-400"
+              class="hover:text-gray-400"
             >
               <svg
                 width="26"
@@ -173,7 +160,7 @@
             <a
               href="https://twitter.com/drehimself"
               target="_blank"
-              class="text-white hover:text-gray-400"
+              class="hover:text-gray-400"
             >
               <svg
                 width="20"
@@ -193,7 +180,7 @@
             <a
               href="https://instagram.com"
               target="_blank"
-              class="text-white hover:text-gray-400"
+              class="hover:text-gray-400"
             >
               <svg
                 width="20"
@@ -268,3 +255,4 @@ export default {
 </script>
 
 <style src="../css/main.css" />
+<style src="../css/legacycss/style.css" />
