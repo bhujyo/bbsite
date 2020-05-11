@@ -1,12 +1,8 @@
-# Gridsome Portfolio Starter
-
-A simple portfolio starter theme for Gridsome
-
-![screenshot](https://user-images.githubusercontent.com/4316355/55691365-a2403380-596b-11e9-93be-05b846ec7760.jpg)
+# Dr. B's Portfolio and Physics Learning Resources
 
 ## Demo URL
 
-[https://gridsome-portfolio-starter.netlify.com](https://gridsome-portfolio-starter.netlify.com)
+[https://bbsite.netlify.app/](https://bbsite.netlify.app/)
 
 ## Features
 
@@ -27,18 +23,17 @@ A simple portfolio starter theme for Gridsome
 ## Installation
 
 1. Install Gridsome CLI tool if you don't have it: `npm install --global @gridsome/cli`
-1. Clone the repo: `git clone https://github.com/drehimself/gridsome-portfolio-starter.git`
-1. `cd gridsome-portfolio-starter`
-1. `npm install`
+1. Clone the repo
+1. `cd bbsite`
+1. `yarn`
 1. `gridsome develop` to start a local dev server at `http://localhost:8080`
 
 ## Notes
 
- - Based on my [personal portfolio website](https://andremadarang.com). I wanted to create an open source version with more features.
- - Check out a [screencast I did](https://www.youtube.com/watch?v=uHo6o1TNQeE) where I go through the process of building my website.
- - Illustrations from [unDraw](https://undraw.co)
- - Search is based on [Fuse.js](https://fusejs.io) and [vue-fuse](https://github.com/shayneo/vue-fuse). It only searches the title and summary of posts for now. Some tweaking may be necessary to get it to search to your liking. Check out the fuse documentation for search settings. A `search.json` index file is generated at build time. This happens in `gridsome.server.js`.
- - Check out these other Gridsome Starters where I got some ideas from:
-    - [Gridsome Starter Blog](https://github.com/gridsome/gridsome-starter-blog)
-    - [Gridsome Starter Bleda](https://github.com/cossssmin/gridsome-starter-bleda)
-    - [Jigsaw Starter Blog](https://jigsaw.tighten.co/docs/starter-templates/) - I got a lot of design inspiration from this starter theme.
+- Forked from the [personal portfolio website](https://andremadarang.com) of Andre Madarang.
+- Illustrations from [unDraw](https://undraw.co)
+- Search is based on [Fuse.js](https://fusejs.io) and [vue-fuse](https://github.com/shayneo/vue-fuse). It only searches the title and summary of posts for now. Some tweaking may be necessary to get it to search to your liking. Check out the fuse documentation for search settings. A `search.json` index file is generated at build time. This happens in `gridsome.server.js`.
+- Check out these other Gridsome Starters where I got some ideas from:
+  - [Gridsome Starter Blog](https://github.com/gridsome/gridsome-starter-blog)
+  - [Gridsome Starter Bleda](https://github.com/cossssmin/gridsome-starter-bleda)
+  - [Jigsaw Starter Blog](https://jigsaw.tighten.co/docs/starter-templates/) - I got a lot of design inspiration from this starter theme.
