@@ -1,8 +1,19 @@
 <template>
   <Layout>
     <div class="container-inner mx-auto py-16">
-      <div v-for="post in $page.posts.edges" :key="post.id" class="post border-gray-400 border-b mb-12">
-        <h2 class="text-3xl font-bold"><g-link :to="post.node.path" class="text-copy-primary">{{ post.node.title }}</g-link></h2>
+      <div v-if="$page.posts.edges.length < 1">
+        Nothing to see here! Tell Dr. B to add more posts!
+      </div>
+      <div
+        v-for="post in $page.posts.edges"
+        :key="post.id"
+        class="post border-gray-400 border-b mb-12"
+      >
+        <h2 class="text-3xl font-bold">
+          <g-link :to="post.node.path" class="text-copy-primary">{{
+            post.node.title
+          }}</g-link>
+        </h2>
         <div class="text-copy-secondary mb-4">
           <span>{{ post.node.date }}</span>
           <span> &middot; </span>
@@ -14,9 +25,12 @@
         </div>
 
         <div class="mb-8">
-          <g-link :to="post.node.path" class="font-bold uppercase">Read More</g-link>
+          <g-link :to="post.node.path" class="font-bold uppercase"
+            >Read More</g-link
+          >
         </div>
-      </div> <!-- end post -->
+      </div>
+      <!-- end post -->
 
       <pagination-posts
         v-if="$page.posts.pageInfo.totalPages > 1"
@@ -51,15 +65,14 @@ query Posts ($page: Int) {
 </page-query>
 
 <script>
-import PaginationPosts from '../components/PaginationPosts'
+import PaginationPosts from "../components/PaginationPosts";
 
 export default {
   metaInfo: {
-    title: 'Blog'
+    title: "Blog",
   },
   components: {
-    PaginationPosts
-  }
-}
+    PaginationPosts,
+  },
+};
 </script>
-
