@@ -21,3 +21,5 @@ fields:
   type: tag_list
   default: []
   label: Tags
+pages:
+- blog/another-post-fpo.md
