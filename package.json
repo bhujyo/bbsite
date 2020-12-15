@@ -21,5 +21,8 @@
   },
   "devDependencies": {
     "gridsome-plugin-tailwindcss": "^2.2.48"
+  },
+  "engines": {
+    "node": ">=12.18"
   }
 }
