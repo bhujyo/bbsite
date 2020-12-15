@@ -9,7 +9,7 @@
   "dependencies": {
     "@gridsome/plugin-sitemap": "^0.2.3",
     "@gridsome/source-filesystem": "^0.6.2",
-    "@gridsome/transformer-remark": "^0.5.0",
+    "@gridsome/transformer-remark": "^0.6.1",
     "@gridsome/vue-remark": "^0.2.2",
     "axios": "^0.19.2",
     "gridsome": "^0.7.19",
@@ -17,12 +17,10 @@
     "gridsome-plugin-rss": "^1.2.0",
     "lodash.pick": "^4.4.0",
     "vue-fuse": "^2.2.1",
-    "vue-scrollto": "^2.18.2"
-  },
-  "devDependencies": {
-    "gridsome-plugin-tailwindcss": "^2.2.48"
-  },
-  "engines": {
-    "node": ">=12.18"
+    "vue-scrollto": "^2.18.2",
+    "postcss-import": "^12.0.1",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "tailwindcss": "^1.8.13"
   }
 }

@@ -3,6 +3,11 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
+const tailwind = require('tailwindcss')
+
+const postcssPlugins = [
+  tailwind(),
+]
 
 module.exports = {
   siteName: "Dr. B",
@@ -10,34 +15,6 @@ module.exports = {
     "Portfolio and Physics Learning Resources, Dr. Bhujyo Bhattacharya",
   siteUrl: "https://bbsite.netlify.app/",
   plugins: [
-    {
-      use: "gridsome-plugin-tailwindcss",
-      options: {
-        purgeConfig: {
-          content: [
-            "./src/**/*.vue",
-            "./src/**/*.js",
-            "./src/**/*.jsx",
-            "./src/**/*.html",
-            "./src/**/*.pug",
-            "./src/**/*.md",
-            "./docs/**/*.md",
-            "./blog/**/*.md",
-          ],
-          whitelist: [
-            "body",
-            "html",
-            "img",
-            "a",
-            "g-image",
-            "g-image--lazy",
-            "g-image--loaded",
-            "active",
-          ],
-          defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-        },
-      },
-    },
     {
       use: "@gridsome/vue-remark",
       options: {
@@ -95,6 +72,13 @@ module.exports = {
       },
     },
   ],
+  css: {
+    loaderOptions: {
+        postcss: {
+            plugins: postcssPlugins,
+        },
+    },
+  },
   templates: {
     Tag: "/tag/:id",
   },
