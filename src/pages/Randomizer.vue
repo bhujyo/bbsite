@@ -26,11 +26,11 @@
               <!-- Student names -->
               <fieldset class="m-2">
                 <legend class="text-3xl">
-                  Enter a list of students (order does not matter)
+                  Step 1: Enter a list of students (order does not matter)
                 </legend>
                 <div
                   class="flex items-center"
-                  v-for="(input, keya) in inputs"
+                  v-for="(input, keya) in studentinputs"
                   :key="keya"
                 >
                   <label
@@ -48,7 +48,7 @@
                   <span class="flex">
                     <button
                       class="m-2 text-xl underline"
-                      @click="remove(keya, 'inputs')"
+                      @click="remove(keya, 'studentinputs')"
                     >
                       (remove student)
                     </button>
@@ -57,7 +57,7 @@
                 <div class="m-2">
                   <button
                     class="px-4 py-2 mt-2 text-xl border-2 border-green-200 rounded-md"
-                    @click="add('inputs', 'name')"
+                    @click="add('studentinputs', 'name')"
                   >
                     add another student
                   </button>
@@ -67,7 +67,7 @@
               <!-- Questions -->
               <fieldset class="m-2 mt-12">
                 <legend class="text-3xl">
-                  Enter a list of questions (order does not matter)
+                  Step 2: Enter a list of questions (order does not matter)
                 </legend>
                 <div
                   class="flex items-center"
@@ -108,6 +108,7 @@
               <div class="px-4 py-3 mt-12 text-right border-t-2 sm:px-6">
                 <button
                   type="submit"
+                  @click="submitForm"
                   class="inline-flex justify-center px-4 py-2 text-xl font-medium text-white bg-green-500 border border-transparent rounded-md shadow-sm min-w-12 hover:bg-green-700"
                 >
                   Randomize assignments!
@@ -120,23 +121,24 @@
             <h2 class="text-5xl text-green-800">
               ...the results!
             </h2>
-            <h3 class="text-3xl">Your data</h3>
-            STS: {{ sts }}
-            <br />
-            INPUTS: {{ inputs }}
-            <br />
-            QUESTIONS: {{ examinputs }}
-            <!-- Results -->
-            <h3 class="text-3xl">Randomized students</h3>
-            <ol>
-              <li
-                class="text-xl list-decimal list-inside"
-                v-for="(assignment, index) in randomAssignments"
-                :key="index"
-              >
-                {{ assignment.student }} - question {{ assignment.question }}
-              </li>
-            </ol>
+            <div v-if="showResults">
+              <h3 class="text-3xl">Your data</h3>
+              <!-- Results -->
+              <h3 class="text-3xl">Randomized students</h3>
+              <ol>
+                <li
+                  class="text-xl list-decimal list-inside"
+                  v-for="(assignment, index) in matchedResults"
+                  :key="index"
+                >
+                  {{ assignment.student }} - {{ assignment.question }}
+                </li>
+              </ol>
+            </div>
+            <div v-else>
+              Fill out the form and click "randomize assignments" to get the
+              results.
+            </div>
           </div>
         </div>
       </section>
@@ -151,36 +153,54 @@ export default {
   },
   data() {
     return {
-      inputs: [{ name: "" }],
+      studentinputs: [{ name: "" }],
       examinputs: [{ question: "" }],
-      sts: "",
-      students: ["AF", "AH", "DK", "LW", "RC"],
-      questionNumbers: [1, 2, 3, 4, 6, 8],
+      showResults: false,
+      matchedResults: [],
     };
-  },
-  computed: {
-    randomAssignments() {
-      const shuffledStudents = this.shuffle(this.students);
-      const shuffledQuestions = this.shuffle(this.questionNumbers);
-      const newArr = [];
-      shuffledStudents.forEach((element) => {
-        newArr.push({
-          student: element,
-          question: shuffledQuestions[shuffledStudents.indexOf(element)],
-        });
-      });
-      return newArr;
-    },
   },
   methods: {
     add(dataprop, keyname) {
+      // Adapted from https://smarttutorials.net/dynamically-add-or-remove-input-textbox-using-vuejs/
       this[dataprop].push({ [keyname]: "" });
     },
     remove(index, dataprop) {
       this[dataprop].splice(index, 1);
     },
     submitForm() {
-      console.log("form submitted", { inputs: this.inputs });
+      // Clear out any empty inputs
+      const cleanStudents = this.clearUnusedInputs(this.studentinputs, "name");
+      const cleanQuestions = this.clearUnusedInputs(
+        this.examinputs,
+        "question"
+      );
+
+      // Shuffle the clean arrays
+      let shuffledStudents = this.shuffle(cleanStudents);
+      let shuffledQuestions = this.shuffle(cleanQuestions);
+
+      // Create a new array of objects where random students are matched with random questions
+      const matchedStudentsQuestions = [];
+
+      shuffledStudents.forEach((oneStudent) => {
+        matchedStudentsQuestions.push({
+          student: oneStudent.name,
+          question:
+            shuffledQuestions[shuffledStudents.indexOf(oneStudent)] !==
+            undefined
+              ? shuffledQuestions[shuffledStudents.indexOf(oneStudent)].question
+              : "Not enough questions - no question assigned",
+        });
+      });
+
+      // Set data to randomized values so we can print
+      this.matchedResults = matchedStudentsQuestions;
+
+      // Don't show the results until the form has been submitted
+      this.showResults = true;
+    },
+    clearUnusedInputs(arr, key) {
+      return arr.filter((data) => data[key] !== "");
     },
     shuffle(myArray) {
       // This fn uses the Fisher-Yates shuffle, as described in this tutorial: https://bost.ocks.org/mike/shuffle/
