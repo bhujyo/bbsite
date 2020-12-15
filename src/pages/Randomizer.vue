@@ -17,12 +17,7 @@
             </h2>
 
             <!-- Form -->
-            <form
-              @submit.prevent
-              action="#"
-              method="POST"
-              class="border-2 border-green-400 rounded-md"
-            >
+            <form @submit.prevent class="border-2 border-green-400 rounded-md">
               <!-- Student names -->
               <fieldset class="m-2">
                 <legend class="text-3xl">
@@ -44,9 +39,11 @@
                     class="block px-4 py-2 mt-1 text-lg border rounded-md shadow-sm border-grey-200 min-w-18"
                     type="text"
                     v-model="input.name"
+                    v-on:keydown.enter="add('studentinputs', 'name')"
                   />
                   <span class="flex">
                     <button
+                      type="button"
                       class="m-2 text-xl underline"
                       @click="remove(keya, 'studentinputs')"
                     >
@@ -56,6 +53,7 @@
                 </div>
                 <div class="m-2">
                   <button
+                    type="button"
                     class="px-4 py-2 mt-2 text-xl border-2 border-green-200 rounded-md"
                     @click="add('studentinputs', 'name')"
                   >
@@ -85,9 +83,11 @@
                     class="block px-4 py-2 mt-1 text-lg border rounded-md shadow-sm border-grey-200 min-w-18"
                     type="text"
                     v-model="examinput.question"
+                    v-on:keydown.enter="add('examinputs', 'question')"
                   />
                   <span class="flex">
                     <button
+                      type="button"
                       class="m-2 text-xl underline"
                       @click="remove(keyb, 'examinputs')"
                     >
@@ -97,6 +97,7 @@
                 </div>
                 <div class="m-2">
                   <button
+                    type="button"
                     class="px-4 py-2 mt-2 text-xl border-2 border-green-200 rounded-md"
                     @click="add('examinputs', 'question')"
                   >
