@@ -5,7 +5,7 @@
         <h1 class="heading-primary">
           <span class="heading-primary--main">Dr. B</span>
           <span class="heading-primary--sub"
-            >Assistant Professor of Physics</span
+            >Associate Professor of Physics</span
           >
           <span class="heading-primary--sub"
             >Department of Natural Sciences</span
@@ -83,7 +83,7 @@
                 <div class="card__details">
                   <ul>
                     <li>
-                      Assistant Professor, <br />Lawrence Technological
+                      Associate Professor, <br />Lawrence Technological
                       University
                     </li>
                     <li>PhD, 2011, University of Chicago</li>
