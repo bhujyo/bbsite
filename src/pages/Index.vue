@@ -30,7 +30,8 @@
               discovery of new phenomena at current and future collider
               experiments worldwide. I am particularly interested in analyzing
               data from LHCb and Belle II to find clean ways of identifying
-              physics beyond the Standard Model.
+              physics beyond the Standard Model. My work is funded by the 
+              <a href="https://www.nsf.gov/">National Science Foundation</a>.
             </p>
 
             <h3 class="heading-tertiary u-margin-bottom-small">
